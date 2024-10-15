@@ -17,6 +17,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Project3D", "Project3D\Proj
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MathLibGame", "MathLibGame\MathLibGame.vcxproj", "{9F1D53A4-7166-439B-AC2F-F9A6B7382BFE}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MathsLibrary", "MathsLibrary\MathsLibrary.vcxproj", "{22764367-5F2E-4CCB-8173-78200DAB09B0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -57,8 +59,19 @@ Global
 		{9F1D53A4-7166-439B-AC2F-F9A6B7382BFE}.Release|x64.Build.0 = Release|x64
 		{9F1D53A4-7166-439B-AC2F-F9A6B7382BFE}.Release|x86.ActiveCfg = Release|Win32
 		{9F1D53A4-7166-439B-AC2F-F9A6B7382BFE}.Release|x86.Build.0 = Release|Win32
+		{22764367-5F2E-4CCB-8173-78200DAB09B0}.Debug|x64.ActiveCfg = Debug|x64
+		{22764367-5F2E-4CCB-8173-78200DAB09B0}.Debug|x64.Build.0 = Debug|x64
+		{22764367-5F2E-4CCB-8173-78200DAB09B0}.Debug|x86.ActiveCfg = Debug|Win32
+		{22764367-5F2E-4CCB-8173-78200DAB09B0}.Debug|x86.Build.0 = Debug|Win32
+		{22764367-5F2E-4CCB-8173-78200DAB09B0}.Release|x64.ActiveCfg = Release|x64
+		{22764367-5F2E-4CCB-8173-78200DAB09B0}.Release|x64.Build.0 = Release|x64
+		{22764367-5F2E-4CCB-8173-78200DAB09B0}.Release|x86.ActiveCfg = Release|Win32
+		{22764367-5F2E-4CCB-8173-78200DAB09B0}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1E2479F8-50DD-4C43-8FA0-5136AFCC6B70}
 	EndGlobalSection
 EndGlobal
