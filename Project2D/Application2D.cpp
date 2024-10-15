@@ -100,7 +100,6 @@ void Application2D::draw() {
 	sprintf_s(fps, 32, "FPS: %i", getFPS());
 	m_2dRenderer->drawText(m_font, fps, 0, 720 - 32);
 	m_2dRenderer->drawText(m_font, "Press ESC to quit!", 0, 720 - 64);
-	m_2dRenderer->drawText(m_font, "skibidi toilet", 0, 720 - 96);
 
 	// done drawing sprites
 	m_2dRenderer->end();
