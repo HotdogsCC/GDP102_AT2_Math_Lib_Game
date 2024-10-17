@@ -32,15 +32,22 @@ public:
 	void addChild(SceneObject* child);
 	void removeChild(SceneObject* child);
 
-	virtual void onUpdate(float deltaTime) = 0;
+	virtual void onUpdate(float deltaTime)  {}
 	void update(float deltaTime);
-	virtual void onDraw(aie::Renderer2D* renderer) = 0;
+	virtual void onDraw(aie::Renderer2D* renderer) {} ;
 	void draw(aie::Renderer2D* renderer);
 
 	const Matrix3& getLocalTransform() const;
 	const Matrix3& getGlobalTransform() const;
 
 	void updateTransform();
+
+	void setPosition(float x, float y);
+	void setRotate(float radians);
+	void setScale(float width, float height);
+	void translate(float x, float y);
+	void rotate(float radians);
+	void scale(float width, float height);
 
 protected:
 

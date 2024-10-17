@@ -1,9 +1,11 @@
 #include "SceneObject.h"
 #include <cassert>
+#include <iostream>
 
 SceneObject::SceneObject()
 {
 	m_localTransform.setIdentity();
+	m_globalTransform.setIdentity();
 }
 
 void SceneObject::addChild(SceneObject* child)
@@ -32,6 +34,7 @@ void SceneObject::removeChild(SceneObject* child)
 
 void SceneObject::update(float deltaTime) 
 {
+	std::cout << "i updated";
 	// run onUpdate behaviour
 	onUpdate(deltaTime);
 
@@ -75,4 +78,33 @@ void SceneObject::updateTransform()
 		child->updateTransform();
 	}
 
+}
+void SceneObject::setPosition(float x, float y) {
+	m_localTransform[2] = { x, y, 1 };
+	updateTransform();
+}
+
+void SceneObject::setRotate(float radians) {
+	m_localTransform.setRotateZ(radians);
+	updateTransform();
+}
+
+void SceneObject::setScale(float width, float height) {
+	m_localTransform.setScaled(width, height, 1);
+	updateTransform();
+}
+
+void SceneObject::translate(float x, float y) {
+	m_localTransform.translate(x, y);
+	updateTransform();
+}
+
+void SceneObject::rotate(float radians) {
+	m_localTransform.rotateZ(radians);
+	updateTransform();
+}
+
+void SceneObject::scale(float width, float height) {
+	m_localTransform.scale(width, height, 1);
+	updateTransform();
 }

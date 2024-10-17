@@ -5,6 +5,7 @@
 #include "Font.h"
 #include <glm/ext.hpp>
 #include <stb_truetype.h>
+#include <iostream>
 
 namespace aie {
 
@@ -326,7 +327,8 @@ void Renderer2D::drawSprite(Texture * texture,
 void Renderer2D::drawSpriteTransformed3x3(Texture * texture,
 										   float * transformMat3x3, 
 										   float width, float height, float depth,
-										   float xOrigin, float yOrigin) {
+	float xOrigin, float yOrigin) {
+	
 	if (texture == nullptr)
 		texture = m_nullTexture;
 
