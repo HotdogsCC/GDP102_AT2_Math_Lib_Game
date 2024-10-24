@@ -4,6 +4,7 @@
 
 SpriteObject* m_tank; 
 SpriteObject* m_turret; 
+AABB* m_physBox;
 
 bool MyApp::startup() 
 {
@@ -18,6 +19,12 @@ bool MyApp::startup()
 
 	m_tank->setPosition(getWindowWidth() / 2.0f, getWindowHeight() / 2.0f);
 
+	Vector2 min(100.0f, 100.0f);
+	Vector2 max(200.0f, 200.0f);
+
+	m_physBox = new AABB(min, max);
+	
+
 	return true;
 }
 
@@ -31,6 +38,7 @@ void MyApp::draw()
 
 	// draw the tank
 	m_tank->draw(m_2dRenderer); 
+	m_physBox->debugDraw(m_2dRenderer);
 	// done drawing sprites
 	m_2dRenderer->end(); 
 
@@ -51,7 +59,6 @@ void MyApp::update(float deltaTime)
 	if (input->isKeyDown(aie::INPUT_KEY_W)) {
 		auto facing = m_tank->getLocalTransform()[1] *
 			deltaTime * 100;
-		std::cout << m_tank->getLocalTransform()[1];
 		m_tank->translate(facing.x, facing.y);
 	}
 	if (input->isKeyDown(aie::INPUT_KEY_S)) {
@@ -66,7 +73,7 @@ void MyApp::update(float deltaTime)
 	if (input->isKeyDown(aie::INPUT_KEY_E))
 		m_turret->rotate(deltaTime);
 
-
+	// draw collision
 }
 
 int main()

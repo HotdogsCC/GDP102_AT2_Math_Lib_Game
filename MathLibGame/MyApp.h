@@ -2,6 +2,7 @@
 #include "Application.h"
 #include "Renderer2D.h"
 #include "SpriteObject.h"
+#include "AABB.h"
 class MyApp : public aie::Application
 {
 public:

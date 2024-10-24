@@ -34,7 +34,6 @@ void SceneObject::removeChild(SceneObject* child)
 
 void SceneObject::update(float deltaTime) 
 {
-	std::cout << "i updated";
 	// run onUpdate behaviour
 	onUpdate(deltaTime);
 

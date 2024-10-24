@@ -131,11 +131,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AABB.h" />
     <ClInclude Include="MyApp.h" />
     <ClInclude Include="SceneObject.h" />
     <ClInclude Include="SpriteObject.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AABB.cpp" />
     <ClCompile Include="MyApp.cpp" />
     <ClCompile Include="SceneObject.cpp" />
     <ClCompile Include="SpriteObject.cpp" />
