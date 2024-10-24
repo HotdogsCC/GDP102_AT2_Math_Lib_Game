@@ -40,6 +40,19 @@ bool AABB::overlaps(const AABB& other) const {
 		m_min.x > other.m_max.x || m_min.y > other.m_max.y);
 }
 
-Vector2 AABB::closestPoint(const Vector2& p) const {
-	return clamp(p, m_min, m_max);
+Vector2 AABB::closestPoint(const Vector2& p){
+	return clamp(p, m_min, m_max); 
+}
+
+void AABB::setMinMax(const Vector2& min, const Vector2& max)
+{
+	m_min = min;
+	m_max = max;
+}
+
+//Sets bounding box with center and size, assumes all sides are the same (square)
+void AABB::setCenterSize(const Vector2& center, const float size)
+{
+	m_min = { center.x - (size * 0.5f), center.y - (size * 0.5f) };
+	m_max = { center.x + (size * 0.5f), center.y + (size * 0.5f) };
 }

@@ -19,6 +19,12 @@ public:
 	bool overlaps(const Vector2& p) const;
 	bool overlaps(const AABB& other) const;
 
+	//Sets min and max coords
+	void setMinMax(const Vector2& min, const Vector2& max);
+
+	//Sets bounding box with center and size, assumes all sides are the same (square)
+	void setCenterSize(const Vector2& center, const float size);
+
 private:
 	//utilities
 	float min(float a, float b) { return a < b ? a : b; }
@@ -40,6 +46,6 @@ private:
 		return max(a, min(b, t));
 	}
 
-	Vector2 closestPoint(const Vector2& p) const;
+	Vector2 closestPoint(const Vector2& p);
 };
 

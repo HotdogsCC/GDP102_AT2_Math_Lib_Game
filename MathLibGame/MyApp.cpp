@@ -74,6 +74,8 @@ void MyApp::update(float deltaTime)
 		m_turret->rotate(deltaTime);
 
 	// draw collision
+	//m_physBox->setMinMax({m_tank->getLocalTransform()[2][0], m_tank->getLocalTransform()[2][1] }, { m_tank->getLocalTransform()[2][0] + 100.0f, m_tank->getLocalTransform()[2][1] + 100.0f });
+	m_physBox->setCenterSize({ m_tank->getGlobalTransform()[2][0], m_tank->getGlobalTransform()[2][1] }, 200);
 }
 
 int main()
