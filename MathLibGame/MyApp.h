@@ -3,6 +3,7 @@
 #include "Renderer2D.h"
 #include "SpriteObject.h"
 #include "AABB.h"
+#include "Bullet.h"
 class MyApp : public aie::Application
 {
 public:

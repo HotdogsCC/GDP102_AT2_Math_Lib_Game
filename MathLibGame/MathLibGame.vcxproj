@@ -132,12 +132,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AABB.h" />
+    <ClInclude Include="Bullet.h" />
     <ClInclude Include="MyApp.h" />
     <ClInclude Include="SceneObject.h" />
     <ClInclude Include="SpriteObject.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AABB.cpp" />
+    <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="MyApp.cpp" />
     <ClCompile Include="SceneObject.cpp" />
     <ClCompile Include="SpriteObject.cpp" />

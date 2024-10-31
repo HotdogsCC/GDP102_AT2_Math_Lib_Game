@@ -82,20 +82,20 @@ void Application3D::update(float deltaTime) {
 	//				  vec4(0, 1, 1, 1));
 
 	//tank geometry
-	//Gizmos::addTri(vec3(1,0,1), vec3(-1, 1, 1), vec3(-1, 0, 1), vec4(1, 0, 0, 0.25f));
-	//Gizmos::addTri(vec3(1,0,1), vec3(1, 1, 1), vec3(-1, 1, 1), vec4(1, 0, 0, 0.25f));
+	Gizmos::addTri(vec3(1,0,0.5f), vec3(-1, 0.5f, 0.5f), vec3(-1, 0, 0.5f), vec4(1, 0, 0, 0.25f));
+	Gizmos::addTri(vec3(1,0, 0.5f), vec3(1, 0.5f, 0.5f), vec3(-1, 0.5f, 0.5f), vec4(1, 0, 0, 0.25f));
 
-	//Gizmos::addTri(vec3(1, 0, 0), vec3(1, 1, 1), vec3(1, 0, 1), vec4(1, 0, 0, 0.25f));
-	//Gizmos::addTri(vec3(1, 0, 0), vec3(1, 1, 0), vec3(1, 1, 1), vec4(1, 0, 0, 0.25f));
+	Gizmos::addTri(vec3(1, 0, -0.5f), vec3(1, 0.5f, 0.5f), vec3(1, 0, 0.5f), vec4(1, 0, 0, 0.25f));
+	Gizmos::addTri(vec3(1, 0, -0.5f), vec3(1, 0.5f, -0.5f), vec3(1, 0.5f, 0.5f), vec4(1, 0, 0, 0.25f));
 
-	//Gizmos::addTri(vec3(-1, 0, 0), vec3(1, 1, 0), vec3(1, 0, 0), vec4(1, 0, 0, 0.25f));
-	//Gizmos::addTri(vec3(-1, 0, 0), vec3(-1, 1, 0), vec3(1, 1, 0), vec4(1, 0, 0, 0.25f));
+	Gizmos::addTri(vec3(-1, 0, -0.5f), vec3(1, 0.5f, -0.5f), vec3(1, 0, -0.5f), vec4(1, 0, 0, 0.25f));
+	Gizmos::addTri(vec3(-1, 0, -0.5f), vec3(-1, 0.5f, -0.5f), vec3(1, 0.5f, -0.5f), vec4(1, 0, 0, 0.25f));
 
-	//Gizmos::addTri(vec3(-1,0,1), vec3(-1,1,1), vec3(-1,1,0), vec4(1, 0, 0, 0.25f));
-	//Gizmos::addTri(vec3(-1,0,1), vec3(-1,1,0), vec3(-1,0,0), vec4(1, 0, 0, 0.25f));
+	Gizmos::addTri(vec3(-1,0,0.5f), vec3(-1,0.5f, 0.5f), vec3(-1,0.5f,-0.5f), vec4(1, 0, 0, 0.25f));
+	Gizmos::addTri(vec3(-1,0, 0.5f), vec3(-1,0.5f,-0.5f), vec3(-1,0,-0.5f), vec4(1, 0, 0, 0.25f));
 
-	//Gizmos::addTri(vec3(1, 1, 1), vec3(1,1,0), vec3(-1,1,0), vec4(1,0,0,0.25f));
-	//Gizmos::addTri(vec3(1, 1, 1), vec3(-1,1,0), vec3(-1,1,1), vec4(1,0,0,0.25f));
+	Gizmos::addTri(vec3(1, 0.5f, 0.5f), vec3(1, 0.5f,-0.5f), vec3(-1, 0.5f,-0.5f), vec4(1,0,0,0.25f));
+	Gizmos::addTri(vec3(1, 0.5f, 0.5f), vec3(-1, 0.5f,-0.5f), vec3(-1, 0.5f, 0.5f), vec4(1,0,0,0.25f));
 
 	//outlines
 	Gizmos::addLine(vec3(1, 0, 0.5f), vec3(1, 0.5f, 0.5f), vec4(1, 0, 0, 0.8f));
