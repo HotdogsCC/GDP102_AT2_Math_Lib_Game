@@ -62,6 +62,15 @@ void MyApp::draw()
 	m_2dRenderer->end(); 
 
 }
+void SpawnBullet(float posx, float posy, float dirx, float  diry)
+{
+	Bullet* bullet = new Bullet();
+	bullet->load("./textures/tank.png");
+	bullet->setScale(0.1f, 0.1f);
+	bullet->setPosition(posx, posy);
+	bullet->SetDirection(dirx, diry);
+	bullets.push_back(bullet);
+}
 
 void MovePlayer1(aie::Input* input, float deltaTime)
 {
@@ -88,6 +97,11 @@ void MovePlayer1(aie::Input* input, float deltaTime)
 		m_turret1->rotate(-deltaTime);
 	if (input->isKeyDown(aie::INPUT_KEY_E))
 		m_turret1->rotate(deltaTime);
+
+	if (input->wasKeyPressed(aie::INPUT_KEY_SPACE))
+	{
+		SpawnBullet(m_tank1->getLocalTransform().wAxis[0], m_tank1->getLocalTransform().wAxis[1], m_turret1->getGlobalTransform()[1][0], m_turret1->getGlobalTransform()[1][1]);
+	}
 }
 
 void MovePlayer2(aie::Input* input, float deltaTime)
@@ -116,16 +130,10 @@ void MovePlayer2(aie::Input* input, float deltaTime)
 	if (input->isKeyDown(aie::INPUT_KEY_O))
 		m_turret2->rotate(deltaTime);
 
-	if (input->wasKeyPressed(aie::INPUT_KEY_SPACE))
+	if (input->wasKeyPressed(aie::INPUT_KEY_ENTER))
 	{
-		Bullet* bullet = new Bullet(); 
-		bullet->load("./textures/tank.png");
-		bullet->setScale(0.1f, 0.1f);
-		bullet->setPosition(m_tank1->getLocalTransform().wAxis[0], m_tank1->getLocalTransform().wAxis[1]);
-		bullet->SetDirection(m_turret1->getGlobalTransform()[1][0], m_turret1->getGlobalTransform()[1][1]);
-		bullets.push_back(bullet);  
+		SpawnBullet(m_tank2->getLocalTransform().wAxis[0], m_tank2->getLocalTransform().wAxis[1], m_turret2->getGlobalTransform()[1][0], m_turret2->getGlobalTransform()[1][1]);
 	}
-		
 
 }
 
@@ -142,11 +150,14 @@ void MyApp::update(float deltaTime)
 		bullet->translate(bullet->direction.x * bullet->speed, bullet->direction.y * bullet->speed);
 	}
 	
+	//
+	// SpawnBullet();
 
 	// draw collision
 	//m_physBox->setMinMax({m_tank->getLocalTransform()[2][0], m_tank->getLocalTransform()[2][1] }, { m_tank->getLocalTransform()[2][0] + 100.0f, m_tank->getLocalTransform()[2][1] + 100.0f });
 	m_physBox1->setCenterSize({ m_tank1->getGlobalTransform()[2][0], m_tank1->getGlobalTransform()[2][1] }, 100);
 	m_physBox2->setCenterSize({ m_tank2->getGlobalTransform()[2][0], m_tank2->getGlobalTransform()[2][1] }, 100);
+
 }
 
 int main()
