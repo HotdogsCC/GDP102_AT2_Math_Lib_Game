@@ -7,7 +7,7 @@ public:
 
 	SpriteObject() {}
 	SpriteObject(const char* filename) { load(filename); }
-	virtual ~SpriteObject() { delete m_texture; }
+	~SpriteObject() { delete m_texture; }
 
 	bool load(const char* filename) {
 		delete m_texture;

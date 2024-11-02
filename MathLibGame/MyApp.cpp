@@ -11,7 +11,8 @@ SpriteObject* m_tank2;
 SpriteObject* m_turret2;
 AABB* m_physBox2;
 
-std::vector<Bullet*> bullets;
+std::vector<Bullet*> bullets1;
+std::vector<Bullet*> bullets2;
 
 bool MyApp::startup() 
 {
@@ -54,22 +55,44 @@ void MyApp::draw()
 	m_physBox1->debugDraw(m_2dRenderer);
 	m_physBox2->debugDraw(m_2dRenderer);
 
-	for (auto bullet : bullets)
+	for (auto bullet : bullets1)
 	{
-		bullet->draw(m_2dRenderer);
+		if (bullet != nullptr)
+		{
+			bullet->draw(m_2dRenderer);
+		}
+		
+	}
+
+	for (auto bullet : bullets2)
+	{
+		if (bullet != nullptr)
+		{
+			bullet->draw(m_2dRenderer);
+		}
 	}
 	// done drawing sprites
 	m_2dRenderer->end(); 
 
 }
-void SpawnBullet(float posx, float posy, float dirx, float  diry)
+void SpawnBullet(float posx, float posy, float dirx, float diry, bool p1)
 {
 	Bullet* bullet = new Bullet();
-	bullet->load("./textures/tank.png");
 	bullet->setScale(0.1f, 0.1f);
 	bullet->setPosition(posx, posy);
 	bullet->SetDirection(dirx, diry);
-	bullets.push_back(bullet);
+
+	if (p1)
+	{
+		bullet->load("./textures/tank.png");
+		bullets1.push_back(bullet);
+	}
+	else
+	{
+		bullet->load("./textures/tank2.png");
+		bullets2.push_back(bullet);
+	}
+	
 }
 
 void MovePlayer1(aie::Input* input, float deltaTime)
@@ -100,7 +123,7 @@ void MovePlayer1(aie::Input* input, float deltaTime)
 
 	if (input->wasKeyPressed(aie::INPUT_KEY_SPACE))
 	{
-		SpawnBullet(m_tank1->getLocalTransform().wAxis[0], m_tank1->getLocalTransform().wAxis[1], m_turret1->getGlobalTransform()[1][0], m_turret1->getGlobalTransform()[1][1]);
+		SpawnBullet(m_tank1->getLocalTransform().wAxis[0], m_tank1->getLocalTransform().wAxis[1], m_turret1->getGlobalTransform()[1][0], m_turret1->getGlobalTransform()[1][1], true);
 	}
 }
 
@@ -132,7 +155,7 @@ void MovePlayer2(aie::Input* input, float deltaTime)
 
 	if (input->wasKeyPressed(aie::INPUT_KEY_ENTER))
 	{
-		SpawnBullet(m_tank2->getLocalTransform().wAxis[0], m_tank2->getLocalTransform().wAxis[1], m_turret2->getGlobalTransform()[1][0], m_turret2->getGlobalTransform()[1][1]);
+		SpawnBullet(m_tank2->getLocalTransform().wAxis[0], m_tank2->getLocalTransform().wAxis[1], m_turret2->getGlobalTransform()[1][0], m_turret2->getGlobalTransform()[1][1], false);
 	}
 
 }
@@ -145,13 +168,35 @@ void MyApp::update(float deltaTime)
 	MovePlayer1(input, deltaTime);
 	MovePlayer2(input, deltaTime);
 
-	for (auto bullet : bullets)
+	for (auto bullet : bullets1)
 	{
-		bullet->translate(bullet->direction.x * bullet->speed, bullet->direction.y * bullet->speed);
+		bullet->translate(bullet->direction.x * bullet->speed * deltaTime, bullet->direction.y * bullet->speed * deltaTime);
+		//should the bullet be destoryed
+		if (bullet->Decay(deltaTime))
+		{
+			//deallocates memory
+			delete bullet;
+
+			//removes bullet
+			bullets1.erase(bullets1.begin());
+
+		}
 	}
-	
-	//
-	// SpawnBullet();
+
+	for (auto bullet : bullets2)
+	{
+		bullet->translate(bullet->direction.x * bullet->speed * deltaTime, bullet->direction.y * bullet->speed * deltaTime);
+		//should the bullet be destoryed
+		if (bullet->Decay(deltaTime))
+		{
+			//deallocates memory
+			delete bullet;
+
+			//removes bullet
+			bullets2.erase(bullets2.begin());
+
+		}
+	}
 
 	// draw collision
 	//m_physBox->setMinMax({m_tank->getLocalTransform()[2][0], m_tank->getLocalTransform()[2][1] }, { m_tank->getLocalTransform()[2][0] + 100.0f, m_tank->getLocalTransform()[2][1] + 100.0f });
