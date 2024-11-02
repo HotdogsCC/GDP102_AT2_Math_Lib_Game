@@ -12,3 +12,4 @@ public:
 	float decay = 3; //Seconds the bullet will remain before despawning
 };
 
+

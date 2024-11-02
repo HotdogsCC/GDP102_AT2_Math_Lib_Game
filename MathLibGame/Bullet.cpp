@@ -24,5 +24,4 @@ bool Bullet::Decay(float deltaTime)
 Bullet::~Bullet()
 {
 	//delete m_texture;
-	std::cout << "gone";
 }
