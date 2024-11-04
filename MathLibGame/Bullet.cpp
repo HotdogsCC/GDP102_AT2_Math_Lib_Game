@@ -1,11 +1,13 @@
 #include "Bullet.h"
 
+//Sets the direction (normalised) the bullet should move in
 void Bullet::SetDirection(float x, float y)
 {
 	direction.x = x;
 	direction.y = y;
 }
 
+//Decays the bullet, returns tru after 3 seconds (destroying itself)
 bool Bullet::Decay(float deltaTime)
 {
 	decay -= deltaTime;
@@ -19,9 +21,4 @@ bool Bullet::Decay(float deltaTime)
 	{
 		return false;
 	}
-}
-
-Bullet::~Bullet()
-{
-	//delete m_texture;
 }

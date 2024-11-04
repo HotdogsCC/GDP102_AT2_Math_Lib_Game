@@ -2,8 +2,6 @@
 #include "Application.h"
 #include "Renderer2D.h"
 #include "SpriteObject.h"
-//#include "AABB.h"
-//#include "Bullet.h"
 #include "BulletContainer.h"
 class MyApp : public aie::Application
 {
